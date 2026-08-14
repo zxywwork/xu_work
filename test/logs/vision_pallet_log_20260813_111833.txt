@@ -1,0 +1,741 @@
+日志开始于 2026-08-13 11:18:33
+============================================================
+[11:18:42] 正在连接机器人 168.168.40.20 ...
+[11:18:43] [机器人] 连接成功，开始刷新状态
+[11:18:43] [机器人] 连接成功，句柄: 0
+[11:18:44] 正在连接 Vision Master 168.168.40.111:4004 (超时 3.0s)
+[11:18:44] [VM] 连接成功
+[11:18:44] [VM] 连接成功 168.168.40.111:4004
+[11:18:46] [VM] 触发拍照...
+[11:18:46] [VM] 发送触发: trigger
+[11:18:47] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:18:47] [VM] ✅ ATTR 包含 0,1,2,3
+[11:18:47] [VM] 收到 12 个点
+[11:18:47] [VM] 解析到 12 个点
+[11:18:50] [速度] 10%
+[11:18:50] [速度] 1%
+[11:19:13] [基准点] 已记录 Point 对象
+[11:19:18] [码垛] 拍照点已记录到 PR14
+[11:19:18] [PR] PR14 已更新
+[11:19:24] [速度] 2%
+[11:19:25] [速度] 3%
+[11:19:25] [速度] 4%
+[11:19:25] [速度] 5%
+[11:20:12] ============================================================
+[11:20:12] [标定] 开始自动标定...
+[11:20:12] [标定] 确保标定板在视野内
+[11:20:12] ============================================================
+[11:20:12] [标定] 正在启动自动标定流程...
+[11:20:12] [标定] 请确保机器人周围安全，标定板在视野内
+[11:20:12] [标定] 机器人将自动移动 J2 轴完成标定，请观察机器人运动
+[11:20:12] [标定] 异常: ('run', -600, 'XERR_STAT_MODE', '机器人当前未处于正确的模式')
+[11:20:12] [标定] ❌ 失败
+[11:20:20] [模式] -> 自动
+[11:20:24] ============================================================
+[11:20:24] [标定] 开始自动标定...
+[11:20:24] [标定] 确保标定板在视野内
+[11:20:24] ============================================================
+[11:20:24] [标定] 正在启动自动标定流程...
+[11:20:24] [标定] 请确保机器人周围安全，标定板在视野内
+[11:20:24] [标定] 机器人将自动移动 J2 轴完成标定，请观察机器人运动
+[11:25:46] [标定] 返回标志 flag=1
+[11:25:46] [标定] ✅ X方向平均误差: 2.4986 mm
+[11:25:46] [标定] ✅ Y方向平均误差: 0.0000 mm
+[11:25:46] [标定] ✅ X方向最大误差: 0.0000 mm
+[11:25:46] [标定] ✅ Y方向最大误差: 0.0000 mm
+[11:25:46] [警告] Y方向误差为0，可能标定数据异常，请检查视觉数据是否正确包含Y坐标
+[11:25:46] [标定] ✅ 成功
+[11:25:46] [标定] X平均误差: 2.4986 mm, Y平均: 0.0000 mm
+[11:25:46] [标定] 视觉工艺 0 已标定
+[11:25:46] [标定] 参数已自动应用
+[11:26:21] [速度] 4%
+[11:26:21] [速度] 3%
+[11:26:23] [速度] 2%
+[11:26:23] [速度] 1%
+[11:26:25] [模式] -> 手动
+[11:26:30] [使能] 上使能 成功
+[11:26:32] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:29:17] [码垛] 安全点已记录到 PR20
+[11:29:17] [PR] PR20 已更新
+[11:29:41] [码垛] P3 (PR12) 已记录并更新编辑框
+[11:29:41] [PR] PR12 已更新
+[11:29:57] [码垛] P1 (PR10) 已记录并更新编辑框
+[11:29:57] [PR] PR10 已更新
+[11:30:07] [码垛] P2 (PR11) 已记录并更新编辑框
+[11:30:07] [PR] PR11 已更新
+[11:30:11] [码垛] 成功生成 9 个目标点（Z基准偏移 0.0 mm）
+[11:30:17] [模式] -> 自动
+[11:30:19] [模式] -> 自动命令
+[11:30:20] [使能] 上使能 成功
+[11:30:41] [MOVJ] 到 (260.0, -151.2, -20.8)
+[11:30:51] [视觉码垛] 开始执行...
+[11:30:51] [视觉码垛] 移动到拍照点
+[11:30:51] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:30:53] [视觉码垛] 触发视觉拍照...
+[11:30:53] [VM] 发送触发: trigger
+[11:30:53] [VM] 解析到 140 个点
+[11:30:53] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:53] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:53] [VM] 收到 140 个点
+[11:30:53] [视觉码垛] 检测到 140 个工件
+[11:30:53] [视觉码垛] 工件数(140)多于剩余码垛点(9)，将只处理前9个
+[11:30:53] [视觉码垛] 处理工件 1/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 2/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 3/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 4/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 5/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 6/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 7/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 8/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 9/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 准备下一次拍照...
+[11:30:53] [视觉码垛] 移动到拍照点
+[11:30:53] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:30:53] [视觉码垛] 触发视觉拍照...
+[11:30:53] [VM] 发送触发: trigger
+[11:30:53] [VM] 解析到 140 个点
+[11:30:53] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:53] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:53] [VM] 收到 140 个点
+[11:30:53] [视觉码垛] 检测到 140 个工件
+[11:30:53] [视觉码垛] 工件数(140)多于剩余码垛点(9)，将只处理前9个
+[11:30:53] [视觉码垛] 处理工件 1/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 2/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 3/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 4/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 5/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 6/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 7/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 8/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 处理工件 9/9
+[11:30:53] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:53] [视觉码垛] 准备下一次拍照...
+[11:30:54] [视觉码垛] 移动到拍照点
+[11:30:54] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:30:54] [视觉码垛] 触发视觉拍照...
+[11:30:54] [VM] 发送触发: trigger
+[11:30:54] [VM] 解析到 139 个点
+[11:30:54] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:54] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:54] [VM] 收到 139 个点
+[11:30:54] [视觉码垛] 检测到 139 个工件
+[11:30:54] [视觉码垛] 工件数(139)多于剩余码垛点(9)，将只处理前9个
+[11:30:54] [视觉码垛] 处理工件 1/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 2/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 3/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 4/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 5/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 6/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 7/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 8/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 9/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 准备下一次拍照...
+[11:30:54] [视觉码垛] 移动到拍照点
+[11:30:54] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:30:54] [视觉码垛] 触发视觉拍照...
+[11:30:54] [VM] 发送触发: trigger
+[11:30:54] [VM] 解析到 138 个点
+[11:30:54] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:54] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:54] [VM] 收到 138 个点
+[11:30:54] [视觉码垛] 检测到 138 个工件
+[11:30:54] [视觉码垛] 工件数(138)多于剩余码垛点(9)，将只处理前9个
+[11:30:54] [视觉码垛] 处理工件 1/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 2/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 3/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 4/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 5/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 6/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 7/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 8/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 处理工件 9/9
+[11:30:54] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:54] [视觉码垛] 准备下一次拍照...
+[11:30:55] [视觉码垛] 移动到拍照点
+[11:30:55] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:30:55] [视觉码垛] 触发视觉拍照...
+[11:30:55] [VM] 发送触发: trigger
+[11:30:55] [VM] 解析到 138 个点
+[11:30:55] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:55] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:55] [VM] 收到 138 个点
+[11:30:55] [视觉码垛] 检测到 138 个工件
+[11:30:55] [视觉码垛] 工件数(138)多于剩余码垛点(9)，将只处理前9个
+[11:30:55] [视觉码垛] 处理工件 1/9
+[11:30:55] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:55] [视觉码垛] 处理工件 2/9
+[11:30:55] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:55] [视觉码垛] 处理工件 3/9
+[11:30:55] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:55] [视觉码垛] 处理工件 4/9
+[11:30:55] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:55] [视觉码垛] 处理工件 5/9
+[11:30:55] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:55] [视觉码垛] 处理工件 6/9
+[11:30:55] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:55] [视觉码垛] 处理工件 7/9
+[11:30:55] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:55] [视觉码垛] 处理工件 8/9
+[11:30:55] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:55] [视觉码垛] 处理工件 9/9
+[11:30:55] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:55] [视觉码垛] 准备下一次拍照...
+[11:30:55] [视觉码垛] 移动到拍照点
+[11:30:55] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:30:56] [视觉码垛] 触发视觉拍照...
+[11:30:56] [VM] 发送触发: trigger
+[11:30:56] [VM] 解析到 143 个点
+[11:30:56] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:56] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:56] [VM] 收到 143 个点
+[11:30:56] [视觉码垛] 检测到 143 个工件
+[11:30:56] [视觉码垛] 工件数(143)多于剩余码垛点(9)，将只处理前9个
+[11:30:56] [视觉码垛] 处理工件 1/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 2/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 3/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 4/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 5/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 6/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 7/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 8/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 9/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 准备下一次拍照...
+[11:30:56] [视觉码垛] 移动到拍照点
+[11:30:56] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:30:56] [视觉码垛] 触发视觉拍照...
+[11:30:56] [VM] 发送触发: trigger
+[11:30:56] [VM] 解析到 144 个点
+[11:30:56] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:56] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:56] [VM] 收到 144 个点
+[11:30:56] [视觉码垛] 检测到 144 个工件
+[11:30:56] [视觉码垛] 工件数(144)多于剩余码垛点(9)，将只处理前9个
+[11:30:56] [视觉码垛] 处理工件 1/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 2/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 3/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 4/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 5/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 6/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 7/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 8/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 处理工件 9/9
+[11:30:56] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:56] [视觉码垛] 准备下一次拍照...
+[11:30:57] [视觉码垛] 移动到拍照点
+[11:30:57] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:30:57] [视觉码垛] 触发视觉拍照...
+[11:30:57] [VM] 发送触发: trigger
+[11:30:57] [VM] 解析到 141 个点
+[11:30:57] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:57] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:57] [VM] 收到 141 个点
+[11:30:57] [视觉码垛] 检测到 141 个工件
+[11:30:57] [视觉码垛] 工件数(141)多于剩余码垛点(9)，将只处理前9个
+[11:30:57] [视觉码垛] 处理工件 1/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 2/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 3/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 4/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 5/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 6/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 7/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 8/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 9/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 准备下一次拍照...
+[11:30:57] [视觉码垛] 移动到拍照点
+[11:30:57] [MOVJ] 到 (238.8, -158.5, -20.8)
+[11:30:57] [视觉码垛] 触发视觉拍照...
+[11:30:57] [VM] 发送触发: trigger
+[11:30:57] [VM] 解析到 139 个点
+[11:30:57] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:57] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:57] [VM] 收到 139 个点
+[11:30:57] [视觉码垛] 检测到 139 个工件
+[11:30:57] [视觉码垛] 工件数(139)多于剩余码垛点(9)，将只处理前9个
+[11:30:57] [视觉码垛] 处理工件 1/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 2/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 3/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 4/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 5/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 6/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 7/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 8/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 处理工件 9/9
+[11:30:57] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:57] [视觉码垛] 准备下一次拍照...
+[11:30:58] [视觉码垛] 移动到拍照点
+[11:30:58] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:30:58] [视觉码垛] 触发视觉拍照...
+[11:30:58] [VM] 发送触发: trigger
+[11:30:58] [VM] 解析到 140 个点
+[11:30:58] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:58] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:58] [VM] 收到 140 个点
+[11:30:58] [视觉码垛] 检测到 140 个工件
+[11:30:58] [视觉码垛] 工件数(140)多于剩余码垛点(9)，将只处理前9个
+[11:30:58] [视觉码垛] 处理工件 1/9
+[11:30:58] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:58] [视觉码垛] 处理工件 2/9
+[11:30:58] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:58] [视觉码垛] 处理工件 3/9
+[11:30:58] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:58] [视觉码垛] 处理工件 4/9
+[11:30:58] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:58] [视觉码垛] 处理工件 5/9
+[11:30:58] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:58] [视觉码垛] 处理工件 6/9
+[11:30:58] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:58] [视觉码垛] 处理工件 7/9
+[11:30:58] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:58] [视觉码垛] 处理工件 8/9
+[11:30:58] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:58] [视觉码垛] 处理工件 9/9
+[11:30:58] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:58] [视觉码垛] 准备下一次拍照...
+[11:30:58] [视觉码垛] 移动到拍照点
+[11:30:58] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:30:59] [视觉码垛] 触发视觉拍照...
+[11:30:59] [VM] 发送触发: trigger
+[11:30:59] [VM] 解析到 48 个点
+[11:30:59] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:59] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:59] [VM] 收到 48 个点
+[11:30:59] [视觉码垛] 检测到 48 个工件
+[11:30:59] [视觉码垛] 工件数(48)多于剩余码垛点(9)，将只处理前9个
+[11:30:59] [视觉码垛] 处理工件 1/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 2/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 3/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 4/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 5/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 6/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 7/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 8/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 9/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 准备下一次拍照...
+[11:30:59] [视觉码垛] 移动到拍照点
+[11:30:59] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:30:59] [视觉码垛] 触发视觉拍照...
+[11:30:59] [VM] 发送触发: trigger
+[11:30:59] [VM] 解析到 12 个点
+[11:30:59] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:30:59] [VM] ✅ ATTR 包含 0,1,2,3
+[11:30:59] [VM] 收到 12 个点
+[11:30:59] [视觉码垛] 检测到 12 个工件
+[11:30:59] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:30:59] [视觉码垛] 处理工件 1/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 2/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 3/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 4/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 5/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 6/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 7/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 8/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 处理工件 9/9
+[11:30:59] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:30:59] [视觉码垛] 准备下一次拍照...
+[11:31:00] [视觉码垛] 移动到拍照点
+[11:31:00] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:00] [视觉码垛] 触发视觉拍照...
+[11:31:00] [VM] 发送触发: trigger
+[11:31:00] [VM] 解析到 12 个点
+[11:31:00] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:00] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:00] [VM] 收到 12 个点
+[11:31:00] [视觉码垛] 检测到 12 个工件
+[11:31:00] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:00] [视觉码垛] 处理工件 1/9
+[11:31:00] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:00] [视觉码垛] 处理工件 2/9
+[11:31:00] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:00] [视觉码垛] 处理工件 3/9
+[11:31:00] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:00] [视觉码垛] 处理工件 4/9
+[11:31:00] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:00] [视觉码垛] 处理工件 5/9
+[11:31:00] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:00] [视觉码垛] 处理工件 6/9
+[11:31:00] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:00] [视觉码垛] 处理工件 7/9
+[11:31:00] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:00] [视觉码垛] 处理工件 8/9
+[11:31:00] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:00] [视觉码垛] 处理工件 9/9
+[11:31:00] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:00] [视觉码垛] 准备下一次拍照...
+[11:31:00] [视觉码垛] 移动到拍照点
+[11:31:00] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:01] [视觉码垛] 触发视觉拍照...
+[11:31:01] [VM] 发送触发: trigger
+[11:31:01] [VM] 解析到 12 个点
+[11:31:01] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:01] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:01] [VM] 收到 12 个点
+[11:31:01] [视觉码垛] 检测到 12 个工件
+[11:31:01] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:01] [视觉码垛] 处理工件 1/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 2/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 3/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 4/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 5/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 6/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 7/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 8/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 9/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 准备下一次拍照...
+[11:31:01] [视觉码垛] 移动到拍照点
+[11:31:01] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:01] [视觉码垛] 触发视觉拍照...
+[11:31:01] [VM] 发送触发: trigger
+[11:31:01] [VM] 解析到 12 个点
+[11:31:01] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:01] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:01] [VM] 收到 12 个点
+[11:31:01] [视觉码垛] 检测到 12 个工件
+[11:31:01] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:01] [视觉码垛] 处理工件 1/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 2/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 3/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 4/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 5/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 6/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 7/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 8/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 处理工件 9/9
+[11:31:01] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:01] [视觉码垛] 准备下一次拍照...
+[11:31:01] [视觉码垛] 移动到拍照点
+[11:31:01] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:02] [视觉码垛] 触发视觉拍照...
+[11:31:02] [VM] 发送触发: trigger
+[11:31:02] [VM] 解析到 12 个点
+[11:31:02] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:02] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:02] [VM] 收到 12 个点
+[11:31:02] [视觉码垛] 检测到 12 个工件
+[11:31:02] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:02] [视觉码垛] 处理工件 1/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 2/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 3/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 4/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 5/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 6/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 7/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 8/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 9/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 准备下一次拍照...
+[11:31:02] [视觉码垛] 移动到拍照点
+[11:31:02] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:02] [视觉码垛] 触发视觉拍照...
+[11:31:02] [VM] 发送触发: trigger
+[11:31:02] [VM] 解析到 12 个点
+[11:31:02] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:02] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:02] [VM] 收到 12 个点
+[11:31:02] [视觉码垛] 检测到 12 个工件
+[11:31:02] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:02] [视觉码垛] 处理工件 1/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 2/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 3/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 4/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 5/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 6/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 7/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 8/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 处理工件 9/9
+[11:31:02] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:02] [视觉码垛] 准备下一次拍照...
+[11:31:03] [视觉码垛] 移动到拍照点
+[11:31:03] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:03] [视觉码垛] 触发视觉拍照...
+[11:31:03] [VM] 发送触发: trigger
+[11:31:03] [VM] 解析到 12 个点
+[11:31:03] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:03] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:03] [VM] 收到 12 个点
+[11:31:03] [视觉码垛] 检测到 12 个工件
+[11:31:03] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:03] [视觉码垛] 处理工件 1/9
+[11:31:03] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:03] [视觉码垛] 处理工件 2/9
+[11:31:03] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:03] [视觉码垛] 处理工件 3/9
+[11:31:03] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:03] [视觉码垛] 处理工件 4/9
+[11:31:03] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:03] [视觉码垛] 处理工件 5/9
+[11:31:03] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:03] [视觉码垛] 处理工件 6/9
+[11:31:03] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:03] [视觉码垛] 处理工件 7/9
+[11:31:03] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:03] [视觉码垛] 处理工件 8/9
+[11:31:03] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:03] [视觉码垛] 处理工件 9/9
+[11:31:03] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:03] [视觉码垛] 准备下一次拍照...
+[11:31:03] [视觉码垛] 移动到拍照点
+[11:31:03] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:04] [视觉码垛] 触发视觉拍照...
+[11:31:04] [VM] 发送触发: trigger
+[11:31:04] [VM] 解析到 12 个点
+[11:31:04] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:04] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:04] [VM] 收到 12 个点
+[11:31:04] [视觉码垛] 检测到 12 个工件
+[11:31:04] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:04] [视觉码垛] 处理工件 1/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 2/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 3/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 4/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 5/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 6/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 7/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 8/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 9/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 准备下一次拍照...
+[11:31:04] [视觉码垛] 移动到拍照点
+[11:31:04] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:04] [视觉码垛] 触发视觉拍照...
+[11:31:04] [VM] 发送触发: trigger
+[11:31:04] [VM] 解析到 12 个点
+[11:31:04] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:04] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:04] [VM] 收到 12 个点
+[11:31:04] [视觉码垛] 检测到 12 个工件
+[11:31:04] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:04] [视觉码垛] 处理工件 1/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 2/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 3/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 4/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 5/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 6/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 7/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 8/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 处理工件 9/9
+[11:31:04] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:04] [视觉码垛] 准备下一次拍照...
+[11:31:04] [视觉码垛] 移动到拍照点
+[11:31:04] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:05] [视觉码垛] 触发视觉拍照...
+[11:31:05] [VM] 发送触发: trigger
+[11:31:05] [VM] 解析到 12 个点
+[11:31:05] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:05] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:05] [VM] 收到 12 个点
+[11:31:05] [视觉码垛] 检测到 12 个工件
+[11:31:05] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:05] [视觉码垛] 处理工件 1/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 2/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 3/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 4/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 5/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 6/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 7/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 8/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 9/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 准备下一次拍照...
+[11:31:05] [视觉码垛] 移动到拍照点
+[11:31:05] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:05] [视觉码垛] 触发视觉拍照...
+[11:31:05] [VM] 发送触发: trigger
+[11:31:05] [VM] 解析到 12 个点
+[11:31:05] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:05] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:05] [VM] 收到 12 个点
+[11:31:05] [视觉码垛] 检测到 12 个工件
+[11:31:05] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:05] [视觉码垛] 处理工件 1/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 2/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 3/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 4/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 5/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 6/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 7/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 8/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 处理工件 9/9
+[11:31:05] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:05] [视觉码垛] 准备下一次拍照...
+[11:31:06] [视觉码垛] 移动到拍照点
+[11:31:06] [MOVJ] 失败: ('movj', -601, 'XERR_STAT_ENABLE', '机器人当前未处于正确的使能状态')
+[11:31:06] [视觉码垛] 触发视觉拍照...
+[11:31:06] [VM] 发送触发: trigger
+[11:31:06] [VM] 解析到 12 个点
+[11:31:06] [VM] ATTR 值统计: [0, 1, 2, 3]
+[11:31:06] [VM] ✅ ATTR 包含 0,1,2,3
+[11:31:06] [VM] 收到 12 个点
+[11:31:06] [视觉码垛] 检测到 12 个工件
+[11:31:06] [视觉码垛] 工件数(12)多于剩余码垛点(9)，将只处理前9个
+[11:31:06] [视觉码垛] 处理工件 1/9
+[11:31:06] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:06] [视觉码垛] 处理工件 2/9
+[11:31:06] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:06] [视觉码垛] 处理工件 3/9
+[11:31:06] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:06] [视觉码垛] 处理工件 4/9
+[11:31:06] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:06] [视觉码垛] 处理工件 5/9
+[11:31:06] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:06] [视觉码垛] 处理工件 6/9
+[11:31:06] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:06] [视觉码垛] 处理工件 7/9
+[11:31:06] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:06] [视觉码垛] 处理工件 8/9
+[11:31:06] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:06] [视觉码垛] 处理工件 9/9
+[11:31:06] [视觉码垛] 视觉转换失败: module 'xapi.api.vision' has no attribute 'vision_dynamic_cnvr'
+[11:31:06] [视觉码垛] 准备下一次拍照...
+[11:31:06] [急停] 机器人已停止，命令队列已清空
+[11:31:06] [视觉码垛] 用户请求停止，机器人已停止
+[11:31:06] [视觉码垛] 已停止
