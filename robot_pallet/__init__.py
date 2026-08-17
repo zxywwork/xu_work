@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-视觉码垛控制系统 —— 分包后的模块化代码
+视觉码垛控制系统 —— 模块化代码
 
 由 test/robot20_sus.py 单文件重构而来，按职责拆分为：
   - common          : 全局串行锁 X5_LOCK、常量、工具函数
@@ -13,8 +13,8 @@
 入口：项目根目录下运行 `python main.py`
 """
 
-__version__ = "1.0.0"
-__app_title__ = "视觉码垛控制系统 - 模块化版"
+__version__ = "1.0.1"
+__app_title__ = "视觉码垛控制系统-演示版"
 
 # 对外暴露关键符号，方便外部 `from robot_pallet import X5_LOCK` 等
 from .common import X5_LOCK

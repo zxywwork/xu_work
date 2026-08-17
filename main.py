@@ -2,15 +2,15 @@
 """
 视觉码垛控制系统 —— 模块化版入口。
 
-由 test/robot20_sus.py 单文件重构而来，代码已拆分到 robot_pallet/ 包：
-  - robot_pallet/vision_master.py : Vision Master 通信线程
-  - robot_pallet/robot_worker.py  : 机器人命令线程
+对 test/robot20_sus.py 成功演示版本进行重构，模块代码存在 robot_pallet/ 文件夹里面：
+  - robot_pallet/vision_master.py : Vision Master 通信线程（海康软件）
+  - robot_pallet/robot_worker.py  : 机器人命令线程  
   - robot_pallet/pallet_logic.py  : 码垛点生成等纯计算逻辑
   - robot_pallet/vision_calib.py  : 视觉标定配置/工艺构造、标定 JSON 读写
   - robot_pallet/ui_main_window.py: MainWindow 主界面
   - robot_pallet/common.py        : 全局串行锁 X5_LOCK、常量、工具函数
 
-运行方式（在项目根目录 xu_work_06 下）：
+主入口：
     python main.py
 """
 import os

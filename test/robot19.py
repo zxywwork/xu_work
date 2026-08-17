@@ -12,6 +12,11 @@ from PyQt5.QtGui import QFont, QColor
 import xapi.api as x5
 import xapi.api.vision as x5v
 
+from threading import Lock
+# 全局串行锁：x5/x5v 原生 SDK 非线程安全，所有线程（主线程、机器人线程、
+# 连续运行线程、视觉码垛线程）的 SDK 调用都必须经过它，避免并发调用导致闪退。
+X5_LOCK = Lock()
+
 
 # ============================================================
 # 工作线程1：Vision Master 通信（含同步触发方法）
@@ -286,17 +291,18 @@ class RobotWorker(QThread):
                 if self.handle is None:
                     return False
                 try:
-                    state = x5.get_system_state(self.handle)
-                    if state.in_pos:
-                        if target is None:
-                            return True
-                        cp = x5.get_cpoint(self.handle)
-                        pose = cp.pose
-                        dx = pose.x - target.x
-                        dy = pose.y - target.y
-                        dz = pose.z - target.z
-                        if math.hypot(dx, dy) <= tolerance and abs(dz) <= tolerance:
-                            return True
+                    with X5_LOCK:
+                        state = x5.get_system_state(self.handle)
+                        if state.in_pos:
+                            if target is None:
+                                return True
+                            cp = x5.get_cpoint(self.handle)
+                            pose = cp.pose
+                            dx = pose.x - target.x
+                            dy = pose.y - target.y
+                            dz = pose.z - target.z
+                            if math.hypot(dx, dy) <= tolerance and abs(dz) <= tolerance:
+                                return True
                 except Exception:
                     time.sleep(0.1)
                     continue
@@ -324,40 +330,41 @@ class RobotWorker(QThread):
                         and cmd[0] in ("movj", "movj_to_pose", "movl_to_pose")):
                     self.log_signal.emit("[急停] 已忽略运动命令，请先复位报警")
                     continue
-                if cmd == "connect":
-                    self._do_connect()
-                elif cmd == "disconnect":
-                    self._do_disconnect()
-                elif cmd == "get_state":
-                    self._do_get_state()
-                elif cmd[0] == "set_mode":
-                    self._do_set_mode(cmd[1])
-                elif cmd[0] == "set_servo":
-                    self._do_set_servo(cmd[1])
-                elif cmd == "reset_alarm":
-                    self._do_reset_alarm()
-                elif cmd[0] == "set_speed":
-                    self._do_set_speed(cmd[1])
-                elif cmd[0] == "movj":
-                    self._do_movj(*cmd[1])
-                elif cmd[0] == "apply_config":
-                    self._do_apply_config(*cmd[1:])
-                elif cmd[0] == "auto_calib":
-                    self._do_auto_calib(cmd[1])
-                elif cmd[0] == "verify":
-                    self._do_verify(*cmd[1:])
-                elif cmd[0] == "switch_uf":
-                    self._do_switch_uf(cmd[1])
-                elif cmd[0] == "switch_tf":
-                    self._do_switch_tf(cmd[1])
-                elif cmd[0] == "set_pr":
-                    self._do_set_pr(cmd[1], cmd[2])
-                elif cmd[0] == "movj_to_pose":
-                    self._do_movj_to_pose(cmd[1], cmd[2], cmd[3], cmd[4])
-                elif cmd[0] == "movl_to_pose":
-                    self._do_movl_to_pose(cmd[1], cmd[2], cmd[3], cmd[4])
-                else:
-                    self.log_signal.emit(f"[Worker] 未知命令: {cmd}")
+                with X5_LOCK:
+                    if cmd == "connect":
+                        self._do_connect()
+                    elif cmd == "disconnect":
+                        self._do_disconnect()
+                    elif cmd == "get_state":
+                        self._do_get_state()
+                    elif cmd[0] == "set_mode":
+                        self._do_set_mode(cmd[1])
+                    elif cmd[0] == "set_servo":
+                        self._do_set_servo(cmd[1])
+                    elif cmd == "reset_alarm":
+                        self._do_reset_alarm()
+                    elif cmd[0] == "set_speed":
+                        self._do_set_speed(cmd[1])
+                    elif cmd[0] == "movj":
+                        self._do_movj(*cmd[1])
+                    elif cmd[0] == "apply_config":
+                        self._do_apply_config(*cmd[1:])
+                    elif cmd[0] == "auto_calib":
+                        self._do_auto_calib(cmd[1])
+                    elif cmd[0] == "verify":
+                        self._do_verify(*cmd[1:])
+                    elif cmd[0] == "switch_uf":
+                        self._do_switch_uf(cmd[1])
+                    elif cmd[0] == "switch_tf":
+                        self._do_switch_tf(cmd[1])
+                    elif cmd[0] == "set_pr":
+                        self._do_set_pr(cmd[1], cmd[2])
+                    elif cmd[0] == "movj_to_pose":
+                        self._do_movj_to_pose(cmd[1], cmd[2], cmd[3], cmd[4])
+                    elif cmd[0] == "movl_to_pose":
+                        self._do_movl_to_pose(cmd[1], cmd[2], cmd[3], cmd[4])
+                    else:
+                        self.log_signal.emit(f"[Worker] 未知命令: {cmd}")
             except Exception as e:
                 self.log_signal.emit(f"[Worker] 命令执行异常: {str(e)}")
                 traceback.print_exc()
@@ -516,7 +523,7 @@ class RobotWorker(QThread):
             self.verify_result_signal.emit(None, "机器人未连接")
             return
         try:
-            result_pose = x5v.vision_dynamic_cnvr(self.handle, vision_idx, pixel_pose, trig_point)
+            result_pose = x5.vision_dynamic_cnvrt(self.handle, vision_idx, pixel_pose, trig_point)
             self.verify_result_signal.emit(result_pose, None)
         except Exception as e:
             self.verify_result_signal.emit(None, str(e))
@@ -639,6 +646,15 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def append_log(self, msg):
+        # Qt 控件只能从主线程操作；若从工作线程调用，则投递回 GUI 线程执行
+        if QThread.currentThread() is not self.thread():
+            QMetaObject.invokeMethod(self, "_append_log_ui", Qt.QueuedConnection,
+                                     Q_ARG(str, msg))
+            return
+        self._append_log_ui(msg)
+
+    @pyqtSlot(str)
+    def _append_log_ui(self, msg):
         ts = datetime.now().strftime("%H:%M:%S")
         full_msg = f"[{ts}] {msg}"
         self.log_text.append(full_msg)
@@ -1408,7 +1424,8 @@ class MainWindow(QMainWindow):
         if self.robot_worker.handle is None:
             return None
         try:
-            point = x5.get_cpoint(self.robot_worker.handle)
+            with X5_LOCK:
+                point = x5.get_cpoint(self.robot_worker.handle)
             return (point.pose.x, point.pose.y, point.pose.z,
                     point.pose.a, point.pose.b, point.pose.c,
                     point.uf, point.tf, point.cfg)
@@ -1554,7 +1571,8 @@ class MainWindow(QMainWindow):
             self.calibration_status[vision_idx] = True
             self.append_log(f"[标定] 视觉工艺 {vision_idx} 已标定")
             try:
-                x5v.vision_set_calib_par(self.robot_worker.handle, vision_idx, transformation)
+                with X5_LOCK:
+                    x5v.vision_set_calib_par(self.robot_worker.handle, vision_idx, transformation)
                 self.append_log("[标定] 参数已自动应用")
                 self.calib_result_label.setText(f"标定状态: ✅ 成功 (X={errors[0]:.3f}mm Y={errors[1]:.3f}mm)")
                 self.calib_result_label.setStyleSheet("background-color: #d4edda; padding: 5px;")
@@ -1867,27 +1885,49 @@ class MainWindow(QMainWindow):
             return
         self._move_to_point(self.selected_row)
 
-    def _move_to_point(self, idx):
-        if idx < 0 or idx >= len(self.pallet_points):
+    def _move_to_point(self, idx, move_type=None, approach_offset=None, depart_offset=None, points=None):
+        if points is None:
+            points = self.pallet_points
+        if idx < 0 or idx >= len(points):
             return
+
+        # 从 GUI 线程直接调用（单点移动）时读取控件；工作线程传入捕获值
+        if move_type is None:
+            move_type = self.move_type_combo.currentText()
+        if approach_offset is None:
+            try:
+                approach_offset = float(self.approach_offset_edit.text())
+            except ValueError:
+                approach_offset = 0.0
+        if depart_offset is None:
+            try:
+                depart_offset = float(self.depart_offset_edit.text())
+            except ValueError:
+                depart_offset = 0.0
 
         handle = self.robot_worker.handle
         if handle is None:
             self.append_log("[错误] 机器人未连接")
             return
         try:
-            state = x5.get_system_state(handle)
-            if state.alarm:
-                self.append_log(f"[错误] 机器人有报警（代码{state.alarm}），请先复位报警")
+            with X5_LOCK:
+                state = x5.get_system_state(handle)
+                alarm = state.alarm
+                enable = state.enable
+                mode = state.mode
+            if alarm:
+                self.append_log(f"[错误] 机器人有报警（代码{alarm}），请先复位报警")
                 return
-            if not state.enable:
+            if not enable:
                 self.append_log("[错误] 机器人未上使能，请先上使能")
                 return
-            if state.mode not in (2, 100):
-                self.append_log(f"[提示] 当前模式{state.mode}，正在切换为自动命令模式...")
-                x5.set_system_mode(handle, 100)
+            if mode not in (2, 100):
+                self.append_log(f"[提示] 当前模式{mode}，正在切换为自动命令模式...")
+                with X5_LOCK:
+                    x5.set_system_mode(handle, 100)
                 time.sleep(0.3)
-                state = x5.get_system_state(handle)
+                with X5_LOCK:
+                    state = x5.get_system_state(handle)
                 if state.mode != 100:
                     self.append_log("[错误] 切换自动命令模式失败，请手动切换")
                     return
@@ -1895,19 +1935,18 @@ class MainWindow(QMainWindow):
             self.append_log(f"[错误] 检查机器人状态异常: {e}")
             return
 
-        target_pose = self.pallet_points[idx]
+        target_pose = points[idx]
         uf = self.pallet_uf
         tf = self.pallet_tf
         cfg = self.pallet_cfg
 
-        approach_z = target_pose.z + float(self.approach_offset_edit.text())
+        approach_z = target_pose.z + approach_offset
         approach_pose = x5.Pose(target_pose.x, target_pose.y, approach_z,
                                 target_pose.a, target_pose.b, target_pose.c, 0, 0, 0)
-        depart_z = target_pose.z + float(self.depart_offset_edit.text())
+        depart_z = target_pose.z + depart_offset
         depart_pose = x5.Pose(target_pose.x, target_pose.y, depart_z,
                               target_pose.a, target_pose.b, target_pose.c, 0, 0, 0)
 
-        move_type = self.move_type_combo.currentText()
         self.append_log(f"[码垛] 移动到第 {idx+1} 个点，运动类型: {move_type}")
 
         if move_type == "MOVJ":
@@ -1941,29 +1980,39 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "提示", "机器人未连接")
             return
         try:
-            state = x5.get_system_state(handle)
-            if state.alarm:
+            with X5_LOCK:
+                state = x5.get_system_state(handle)
+                alarm = state.alarm
+                enable = state.enable
+                mode = state.mode
+            if alarm:
                 self.append_log("[错误] 机器人有报警，请先复位报警")
                 QMessageBox.warning(self, "提示", "机器人有报警，请先点击“复位报警”")
                 return
-            if not state.enable:
+            if not enable:
                 self.append_log("[提示] 机器人未上使能，正在上使能...")
-                x5.enable_servo(handle, True)
+                with X5_LOCK:
+                    x5.enable_servo(handle, True)
                 time.sleep(0.5)
-                state = x5.get_system_state(handle)
-                if not state.enable:
+                with X5_LOCK:
+                    state = x5.get_system_state(handle)
+                    enable = state.enable
+                if not enable:
                     self.append_log("[错误] 上使能失败")
                     QMessageBox.warning(self, "提示", "上使能失败，请手动上使能")
                     return
-            if state.mode not in (2, 100):
-                self.append_log(f"[提示] 当前模式不是自动/自动命令模式 (当前={state.mode})，正在切换到自动命令模式...")
-                x5.set_system_mode(handle, 100)
+            if mode not in (2, 100):
+                self.append_log(f"[提示] 当前模式不是自动/自动命令模式 (当前={mode})，正在切换到自动命令模式...")
+                with X5_LOCK:
+                    x5.set_system_mode(handle, 100)
                 for _ in range(20):
                     time.sleep(0.1)
-                    state = x5.get_system_state(handle)
-                    if state.mode == 100:
+                    with X5_LOCK:
+                        state = x5.get_system_state(handle)
+                    mode = state.mode
+                    if mode == 100:
                         break
-                if state.mode != 100:
+                if mode != 100:
                     self.append_log("[错误] 切换模式失败")
                     QMessageBox.warning(self, "提示", "切换模式失败，请手动切换到自动模式或自动命令模式")
                     return
@@ -1974,6 +2023,19 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "提示", f"准备机器人状态失败: {e}")
             return
 
+        # 在线程启动前捕获参数，工作线程不再直接读取 Qt 控件
+        run_points = list(self.pallet_points)
+        run_total = len(run_points)
+        run_move_type = self.move_type_combo.currentText()
+        try:
+            run_approach = float(self.approach_offset_edit.text())
+        except ValueError:
+            run_approach = 0.0
+        try:
+            run_depart = float(self.depart_offset_edit.text())
+        except ValueError:
+            run_depart = 0.0
+
         self.run_all_flag = True
         self.stop_requested = False
         self.stop_run_btn.setEnabled(True)
@@ -1981,17 +2043,17 @@ class MainWindow(QMainWindow):
         self.append_log("[码垛] 开始连续运行所有点")
         import threading
         def run_thread():
-            for i in range(len(self.pallet_points)):
+            for i in range(run_total):
                 if self.stop_requested:
                     break
                 if not self.run_all_flag:
                     break
                 QMetaObject.invokeMethod(self, "update_progress", Qt.QueuedConnection,
-                                         Q_ARG(int, i+1), Q_ARG(int, len(self.pallet_points)),
-                                         Q_ARG(float, self.pallet_points[i].x),
-                                         Q_ARG(float, self.pallet_points[i].y),
-                                         Q_ARG(float, self.pallet_points[i].z))
-                self._move_to_point(i)
+                                         Q_ARG(int, i+1), Q_ARG(int, run_total),
+                                         Q_ARG(float, run_points[i].x),
+                                         Q_ARG(float, run_points[i].y),
+                                         Q_ARG(float, run_points[i].z))
+                self._move_to_point(i, run_move_type, run_approach, run_depart, run_points)
                 time.sleep(0.5)
             self.run_all_flag = False
             self.stop_requested = False
@@ -2073,25 +2135,34 @@ class MainWindow(QMainWindow):
         # 检查机器人状态
         handle = self.robot_worker.handle
         try:
-            state = x5.get_system_state(handle)
-            if state.alarm:
+            with X5_LOCK:
+                state = x5.get_system_state(handle)
+                alarm = state.alarm
+                enable = state.enable
+                mode = state.mode
+            if alarm:
                 self.append_log("[错误] 机器人有报警")
                 QMessageBox.warning(self, "提示", "机器人有报警，请先复位报警")
                 return
-            if not state.enable:
+            if not enable:
                 self.append_log("[提示] 上使能中...")
-                x5.enable_servo(handle, True)
+                with X5_LOCK:
+                    x5.enable_servo(handle, True)
                 time.sleep(0.5)
-                state = x5.get_system_state(handle)
-                if not state.enable:
+                with X5_LOCK:
+                    state = x5.get_system_state(handle)
+                    enable = state.enable
+                if not enable:
                     self.append_log("[错误] 上使能失败")
                     QMessageBox.warning(self, "提示", "上使能失败")
                     return
-            if state.mode not in (2, 100):
+            if mode not in (2, 100):
                 self.append_log("[提示] 切换到自动命令模式...")
-                x5.set_system_mode(handle, 100)
+                with X5_LOCK:
+                    x5.set_system_mode(handle, 100)
                 time.sleep(0.5)
-                state = x5.get_system_state(handle)
+                with X5_LOCK:
+                    state = x5.get_system_state(handle)
                 if state.mode != 100:
                     self.append_log("[错误] 切换模式失败")
                     QMessageBox.warning(self, "提示", "切换模式失败")
@@ -2178,8 +2249,9 @@ class MainWindow(QMainWindow):
                                               tf=photo_point.tf, cfg=photo_point.cfg)
                         pixel_pose = x5.Pose(pixel['x'], pixel['y'], 0, 0, 0, pixel['c'], 0, 0, 0)
                         try:
-                            result_pose = x5v.vision_dynamic_cnvr(self.robot_worker.handle, vision_idx,
-                                                                  pixel_pose, trig_point)
+                            with X5_LOCK:
+                                result_pose = x5.vision_dynamic_cnvrt(self.robot_worker.handle, vision_idx,
+                                                                      pixel_pose, trig_point)
                         except Exception as e:
                             self.append_log(f"[视觉码垛] 视觉转换失败: {e}")
                             continue
