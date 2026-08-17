@@ -40,7 +40,7 @@ from .vision_calib import (point_to_dict, point_from_dict,
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("视觉码垛控制系统 - 模块化版（点位可编辑）")
+        self.setWindowTitle("视觉码垛控制系统-演示版")
         self.setGeometry(50, 50, 1800, 1300)
 
         # ---- 创建日志文件 ----
