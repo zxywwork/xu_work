@@ -8,7 +8,7 @@
   - robot_worker    : 机器人命令线程（命令队列 + 串行 SDK 调用 + wait_idle）
   - pallet_logic    : 码垛点生成、趋近/离开位姿等纯计算逻辑
   - vision_calib    : 视觉标定配置/工艺构造、标定 JSON 保存/导入（纯逻辑）
-  - ui_main_window  : MainWindow 主界面（界面组装 + 事件槽，调度以上模块）
+  - ui_main_window  : MainWindow 主界面（界面组装 + 事件槽，调度以上模块） 
 
 入口：项目根目录下运行 `python main.py`
 """
